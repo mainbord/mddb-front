@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let device of deviceService.devices; let i = index">
+    <strong>{{i + 1}}</strong>
+    {{ device.modelName }}
+  </li>
+</ul>

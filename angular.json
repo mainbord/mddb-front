@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mddb-web"
+    }
+  },
+  "defaultProject": "mddb-web",
+  "cli": {
+    "analytics": false
+  }
 }
