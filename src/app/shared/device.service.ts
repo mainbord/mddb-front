@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 export interface Device {
   id: number
@@ -13,10 +13,14 @@ export class DeviceService {
   constructor(private mddbRestClient: HttpClient) {
   }
 
+  //TODO hard code pagination
+  params = new HttpParams().set('pageNumber', "0")
+    .set('pageSize', "3");
+
   fetchDevices(): void {
-    this.mddbRestClient.get<Device[]>('http://localhost:8080/phones')
+    this.mddbRestClient.get<Device[]>('http://localhost:8080/phones?pageNumber=2&pageSize=3', { params: this.params })
       .subscribe(x => {
-        console.log(x);
+        // console.log(x);
              for (const d of x) {
                this.devices.push(d);
              }
